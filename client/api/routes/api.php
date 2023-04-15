@@ -28,3 +28,6 @@ Route::post('star/send', [StarController::class, 'send']);
 
 // buyhistory record create
 Route::post('buy_history/create', [BuyHistoryController::class, 'create']);
+
+// Retrieve the requested user's content
+Route::get('content/get',[ContentController::class,'getContents']);
