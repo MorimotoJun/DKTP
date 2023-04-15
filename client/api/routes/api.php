@@ -22,3 +22,6 @@ Route::post('content/save', [ContentController::class, 'save']);
 
 // update content data when content was listed
 Route::post('content/list', [ContentController::class, 'list']);
+
+// send star 
+Route::post('star/send', [StarController::class, 'send']);
