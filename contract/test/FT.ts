@@ -1,9 +1,10 @@
+"use strict";
 import { loadFixture } from "@nomicfoundation/hardhat-network-helpers";
 import { expect } from "chai";
 import { ethers } from "hardhat";
 import { ContractEnum } from "../scripts/utils";
 
-describe.only("FT", function() {
+describe("FT Contract", function() {
     describe("mint", function() {
         it("should be successful by owner", async function() {
             const { ft, owner } = await loadFixture(deployFixture);
