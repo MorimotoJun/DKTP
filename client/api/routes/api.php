@@ -14,6 +14,5 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
+//user address store in DB when user connect wallet on this service first time
+Route::post('/user/register', [UserController::class, 'register']);
