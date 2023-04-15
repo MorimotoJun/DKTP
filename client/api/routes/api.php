@@ -37,3 +37,6 @@ Route::get('contents',[ContentController::class,'index']);
 
 //The specified content can be retrieved.
 Route::get('content',[ContentController::class,'get']);
+
+// get buyhistory_content of request user
+Route::get('buyhistory/get',[BuyHistoryController::class,'getBuyhistory']);
