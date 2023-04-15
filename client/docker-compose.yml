@@ -1,0 +1,47 @@
+version: "3"
+
+services:
+    web:
+        ports:
+            - "8000:80"
+            - "8080:8080"
+        build: ./docker/web/
+        volumes:
+            - ./index.html:/var/www/html/index.html
+            - ./docker/web/httpd.conf:/usr/local/apache2/conf/httpd.conf
+            - ./logs:/usr/local/apache2/logs/httpd
+        depends_on:
+            - ui
+        links:
+            - ui
+    ui:
+        build:
+            context: ./
+            dockerfile: ./docker/ui/Dockerfile
+        volumes:
+            - ./ui:/app
+        ports:
+            - "24678:24678"
+    api:
+        build:
+            context: ./
+            dockerfile: ./docker/api/Dockerfile
+        volumes:
+            - ./api:/var/www/html
+        depends_on:
+            - db
+        links:
+            - db
+    db:
+        image: mysql:8
+        volumes:
+            - ./db-store:/var/lib/mysql
+            - ./docker/mysql/my.cnf:/etc/mysql/conf.d/my.cnf
+            - ./logs:/var/log/mysql
+        ports:
+            - "4306:3306"
+        environment:
+            - MYSQL_DATABASE=dev
+            - MYSQL_USER=dev
+            - MYSQL_PASSWORD=password
+            - MYSQL_ROOT_PASSWORD=password
