@@ -25,3 +25,6 @@ Route::post('content/list', [ContentController::class, 'list']);
 
 // send star 
 Route::post('star/send', [StarController::class, 'send']);
+
+// buyhistory record create
+Route::post('buy_history/create', [BuyHistoryController::class, 'create']);
