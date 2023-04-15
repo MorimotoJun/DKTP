@@ -19,3 +19,6 @@ Route::post('/user/register', [UserController::class, 'register']);
 
 // save article data
 Route::post('content/save', [ContentController::class, 'save']);
+
+// update content data when content was listed
+Route::post('content/list', [ContentController::class, 'list']);
