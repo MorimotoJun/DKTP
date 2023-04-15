@@ -4,13 +4,16 @@ pragma solidity ^0.8.9;
 import "./interface/IFT.sol";
 import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
-import "hardhat/console.sol";
 
 contract FT is ERC20, Ownable, IFT {
-    address treasury;
+    /*************
+     * MODIFIERS *
+     *************/
 
+    address treasury;
+    
     modifier onlyTreasury() {
-        require(msg.sender == treasury, "caller should be only treasury");
+        require(msg.sender == treasury, "onlyTreasury");
         _;
     }
 
@@ -18,17 +21,29 @@ contract FT is ERC20, Ownable, IFT {
         require(
             msg.sender == treasury
             || msg.sender == owner(),
-            "caller should be only owner or treasury"
+            "onlyOwnerOrTreasury"
         );
         _;
     }
+
+    /***************
+     * CONSTRUCTOR *
+     ***************/
 
     constructor(address treasuryAddress) ERC20("MarketFT", "FT") {
         treasury = treasuryAddress;
     }
 
+    function setTreasuryContract(address _treasuryContract) external onlyOwner {
+        treasury = _treasuryContract;
+    }
+
+    /*************
+     * FUNCTIONS *
+     *************/
+
     function mint(address to, uint amount) public onlyOwnerOrTreasury {
-        _mint(to, amount);
+        _mint(to, amount );
     }
 
     function burn(uint256 _amount) external onlyTreasury {

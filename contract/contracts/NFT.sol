@@ -6,13 +6,14 @@ import "@openzeppelin/contracts/utils/Strings.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
 import "./interface/INFT.sol";
 
+
 contract NFT is ERC1155, Ownable, INFT {
     using Strings for uint256;
 
     /*************
      * CONSTANTS *
      *************/
-
+    
     // Optional base URI
     string private _baseURI = "";
 
@@ -68,7 +69,7 @@ contract NFT is ERC1155, Ownable, INFT {
         address to,
         uint256[] memory ,
         uint256[] memory ,
-        bytes memory
+        bytes memory 
     ) internal pure override {
         require(
             from==address(0) || to==address(0),
