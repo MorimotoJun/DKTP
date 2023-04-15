@@ -34,3 +34,6 @@ Route::get('content/get',[ContentController::class,'getContents']);
 
 // all listed content get
 Route::get('contents',[ContentController::class,'index']);
+
+//The specified content can be retrieved.
+Route::get('content',[ContentController::class,'get']);
