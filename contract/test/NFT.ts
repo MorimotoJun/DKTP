@@ -4,7 +4,7 @@ import { expect } from "chai";
 import { ethers } from "hardhat";
 import { ContractEnum, getAbi } from "../scripts/utils";
 
-describe.only("NFT Contract", function () {
+describe("NFT Contract", function () {
     describe('baseURI & uri & mintAndTransfer', function() {
         it('should be set successfully', async function() {
             const { contract, util } = await loadFixture(deployFixture);

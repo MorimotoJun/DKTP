@@ -38,12 +38,10 @@ export function getAbi(CONTRACT: ContractEnum): ABI {
 }
 
 export enum ContractEnum {
+    NFT = "NFT",
     Market = "Market",
     FT = "FT",
-    NFT = "NFT",
-}
-
-export enum TokenType {
-    MATIC,
-    FT
+    Treasury = "Treasury",
+    TestNFT = "TestNFT",
+    UniswapV3Liquidity = "UniswapV3Liquidity",
 }
