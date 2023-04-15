@@ -1,0 +1,47 @@
+{
+  "name": "eth-tokyo",
+  "private": true,
+  "type": "module",
+  "scripts": {
+      "build": "nuxt build",
+      "dev": "nuxt dev",
+      "generate": "nuxt generate",
+      "preview": "nuxt preview",
+      "postinstall": "nuxt prepare"
+  },
+  "devDependencies": {
+      "@editorjs/link": "^2.5.0",
+      "@tailwindcss/typography": "^0.5.9",
+      "autoprefixer": "^10.4.14",
+      "nuxt": "^3.4.1",
+      "nuxt-icon": "^0.3.3",
+      "postcss": "^8.4.21",
+      "tailwindcss": "^3.3.0"
+  },
+  "dependencies": {
+      "@editorjs/editorjs": "^2.26.5",
+      "@editorjs/header": "^2.7.0",
+      "@esbuild/linux-arm64": "^0.17.16",
+      "@fortawesome/vue-fontawesome": "^3.0.3",
+      "@lit-protocol/lit-node-client": "^2.1.116",
+      "@metamask/detect-provider": "^2.0.0",
+      "@tiptap/extension-bold": "^2.0.2",
+      "@tiptap/extension-bullet-list": "^2.0.2",
+      "@tiptap/extension-code": "^2.0.2",
+      "@tiptap/extension-floating-menu": "^2.0.2",
+      "@tiptap/extension-heading": "^2.0.2",
+      "@tiptap/extension-list-item": "^2.0.2",
+      "@tiptap/extension-strike": "^2.0.2",
+      "@tiptap/pm": "^2.0.1",
+      "@tiptap/starter-kit": "^2.0.1",
+      "@tiptap/vue-3": "^2.0.1",
+      "@types/node": "^18.15.11",
+      "@vueup/vue-quill": "^1.1.1",
+      "dompurify": "^3.0.1",
+      "dynamic-import-polyfill": "^0.1.1",
+      "ethers": "^6.2.3",
+      "vue-final-modal": "^4.1.1",
+      "vue3-tabs-component": "^1.2.1",
+      "web3": "^1.9.0"
+  }
+}
