@@ -9,6 +9,4 @@ interface INFT is IERC1155 {
      *************/
 
     function mintAndTransfer(uint256 tokenId, string memory tokenUri, address recipient) external;
-
-    function burn(address from, uint256[] memory tokenIds, uint256[] memory amounts) external;
 }
