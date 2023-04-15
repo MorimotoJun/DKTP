@@ -1,9 +1,11 @@
+"use strict";
 import { loadFixture } from "@nomicfoundation/hardhat-network-helpers";
+import { Contract } from 'web3-eth-contract';
 import { expect, assert } from "chai";
 import { ethers, web3 } from "hardhat";
 import { ContractEnum, getAbi, TokenType } from "../scripts/utils";
 
-describe("Market", function () {
+describe("Market Contract", function () {
   describe("listArticle", function () {
     it("should be succeeded with multiple request", async function () {
       const { market } = await loadFixture(deployFixture);
@@ -82,7 +84,7 @@ async function deployFixture() {
     return { market, owner };
   }
 
-async function listArticles(market: web3.eth.Contract, listArticleInputs: ITestListArticleInput[]) {
+async function listArticles(market: Contract, listArticleInputs: ITestListArticleInput[]) {
   for (let i = 0; i < listArticleInputs.length; i++){
     const _article = listArticleInputs[i];
     const func = await market.methods.listArticle(_article.tokenType, _article.price, _article.cid);
