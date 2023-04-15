@@ -16,3 +16,6 @@ use Illuminate\Support\Facades\Route;
 
 //user address store in DB when user connect wallet on this service first time
 Route::post('/user/register', [UserController::class, 'register']);
+
+// save article data
+Route::post('content/save', [ContentController::class, 'save']);
