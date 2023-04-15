@@ -31,3 +31,6 @@ Route::post('buy_history/create', [BuyHistoryController::class, 'create']);
 
 // Retrieve the requested user's content
 Route::get('content/get',[ContentController::class,'getContents']);
+
+// all listed content get
+Route::get('contents',[ContentController::class,'index']);
