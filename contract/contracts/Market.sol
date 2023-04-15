@@ -9,7 +9,7 @@ import "./interface/Enum.sol";
 contract Market is Ownable {
     struct Article {
         TokenType tokenType;
-        uint price;
+        uint256 price;
         string cid;
         address payable author;
     }
@@ -17,7 +17,8 @@ contract Market is Ownable {
     event Star( address indexed from, address indexed to, uint256 amount);
 
     mapping (uint => Article) articles;
-    uint nextTokenId;
+    uint256 nextTokenId;
+    uint8 commissionPercentage = 5; // 5%
 
     modifier validCID(string memory _cid) {
         // TODO: add more logic
@@ -42,8 +43,6 @@ contract Market is Ownable {
         _;
     }
 
-    constructor() {}
-
     function listArticle (TokenType _tokenType, uint256 _price, string memory _cid) validCID(_cid) ifExistTokenId(nextTokenId) external returns (uint256) {
         articles[nextTokenId] = Article(_tokenType, _price, _cid, payable(msg.sender));
         uint currentTokenId = nextTokenId;
@@ -55,9 +54,22 @@ contract Market is Ownable {
         require(msg.sender == articles[_tokenId].author, "caller is not the article's author");
         delete articles[_tokenId];
     }
-    
+
+    function purchaseArticle(uint tokenId) payable external ifNotExistTokenId(tokenId) {
+        Article memory article = articles[tokenId];
+        // uint256 priceForCommission = article.price / 100 * commissionPercentage;
+        // uint256 priceForAuthor = article.price / 100 * ( 100 - commissionPercentage);
+        if (article.tokenType == TokenType.MATIC) {
+            require(msg.value == article.price, "insufficient value for the article");
+            // transfer to treasury, author
+        } else if (article.tokenType == TokenType.FT) {
+            require(msg.value == 0, "value should be 0 when the article can buy FT");
+            // ft transfer
+        }
+        // mint
+    }
+
     function getArticle(uint tokenId) external view ifNotExistTokenId(tokenId) returns (Article memory) {
         return articles[tokenId];
     }
-
 }

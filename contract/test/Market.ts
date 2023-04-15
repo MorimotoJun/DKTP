@@ -69,12 +69,12 @@ interface ITestListArticleInput {
 }
 
 async function deployFixture() {
-  const [owner] = (await web3.eth.getAccounts()).slice(-1);
+  const [ owner ] = (await web3.eth.getAccounts()).slice(-1);
 
     let marketAddress: string;
     const MarketContract = await getAbi(ContractEnum.Market);
     const contractInstance = new web3.eth.Contract(MarketContract.abi);
-    const deployTx = contractInstance.deploy({ data: MarketContract.bytecode });
+    const deployTx = contractInstance.deploy({ data: MarketContract.bytecode, arguments: ["","",""] });
     const market = await deployTx.send({ from: owner, gas: 0 }).on('receipt', function(receipt: any){
       marketAddress = receipt.contractAddress;
     });

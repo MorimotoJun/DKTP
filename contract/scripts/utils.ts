@@ -39,6 +39,7 @@ export function getAbi(CONTRACT: ContractEnum): ABI {
 
 export enum ContractEnum {
     Market = "Market",
+    FT = "FT",
 }
 
 export enum TokenType {
